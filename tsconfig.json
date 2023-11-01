@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "rootDirs": ["src"],
+    "baseUrl": "./src",
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "paths": {
+      "~driven/*": ["adapter/driven/*"],
+      "~driver/*": ["adapter/driver/*"],
+      "~core/*": ["core/*"]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
