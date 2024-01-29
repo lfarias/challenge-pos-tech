@@ -1,8 +1,8 @@
 {
-  "name": "fiap-soat-project_db",
+  "name": "fiap-tech-challenge-soat",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "",
+  "repository": "git@github.com:lfarias/challenge-pos-tech.git",
   "author": "Julio e Luciano",
   "license": "MIT",
   "engines": {

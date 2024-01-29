@@ -14,9 +14,10 @@
     "outDir": "./dist",
     "moduleResolution": "node",
     "paths": {
-      "~driven/*": ["adapter/driven/*"],
-      "~driver/*": ["adapter/driver/*"],
-      "~core/*": ["core/*"]
+      "~datasources/*": ["datasources/*"],
+      "~interfaceAdapters/*": ["interfaceAdapters/*"],
+      "~presenters/*": ["presenters/*"],
+      "~domain/*": ["domain/*"]
     }
   },
   "ts-node": {
