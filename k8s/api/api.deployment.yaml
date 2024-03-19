@@ -14,15 +14,23 @@ spec:
     spec:
       containers:
         - name: tech-challenge-api-container
+<<<<<<< HEAD
           image: eltonarodrigues/fiap-tech-challenge-soat-grupo-30:latest
+=======
+          image: eltonarodrigues/fiap-tech-challenge-soat-grupo-30:v2.0.0
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
           ports:
             - containerPort: 3000
           env:
             - name: DB_HOST
+<<<<<<< HEAD
               valueFrom:
                 secretKeyRef:
                   name: fiap-tech-secrets
                   key: db_host
+=======
+              value: tech-challenge-db-svc
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -42,6 +50,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: fiap-tech-secrets
+<<<<<<< HEAD
                   key: jwt_secret
             - name: USER_POOL_ID
               valueFrom:
@@ -63,3 +72,6 @@ spec:
                 secretKeyRef:
                   name: fiap-tech-secrets
                   key: pool_admin_client_id
+=======
+                  key: jwt_secret
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778

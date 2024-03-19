@@ -1,7 +1,19 @@
 import { z } from "zod";
 
 /** Inicia Pedido */
+<<<<<<< HEAD
 export const iniciaPedidoSchema = z.object({});
+=======
+export const iniciaPedidoSchema = z.object({
+  body: z.object({
+    clienteId: z
+      .string()
+      .uuid({ message: "O id do cliente deve ser UUID" })
+      .optional(),
+  }),
+});
+
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 export type IniciaPedidoPayload = z.infer<typeof iniciaPedidoSchema>;
 
 /** Adicionar Item */

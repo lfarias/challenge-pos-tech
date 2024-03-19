@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import express, { NextFunction } from "express";
 import { Request, Response } from "express";
 import throwError from "handlerError/handlerError";
@@ -8,6 +9,14 @@ import { CategoriaController } from "~interfaceAdapters/controllers/categoriaCon
 
 import authenticate from "../middleware/auth";
 
+=======
+import express from "express";
+import { Request, Response } from "express";
+
+import DBCategoriasRepository from "~datasources/database/repository/categoriaDatabaseRepository";
+import { CategoriaController } from "~interfaceAdapters/controllers/categoriaController";
+
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 import {
   CriaCategoriaPayload,
   CriaCategoriaSchema,
@@ -61,8 +70,11 @@ const dbCategoriasRepository = new DBCategoriasRepository();
  *     summary: Criar uma categoria
  *     tags:
  *       - categoria
+<<<<<<< HEAD
  *     security:
  *       - bearerAuth: []
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
  *     requestBody:
  *       required: true
  *       content:
@@ -94,9 +106,14 @@ const dbCategoriasRepository = new DBCategoriasRepository();
  *         description: Erro na criacao da categoria.
  */
 categoriaRouter.post("/",
+<<<<<<< HEAD
   authenticate(TipoUsuario.ADMIN),
   validaRequisicao(CriaCategoriaSchema),
   async (req: Request<unknown, CriaCategoriaPayload>, res: Response, next: NextFunction) => {
+=======
+  validaRequisicao(CriaCategoriaSchema),
+  async (req: Request<unknown, CriaCategoriaPayload>, res: Response) => {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     try {
       const categoria = req.body;
 
@@ -107,7 +124,11 @@ categoriaRouter.post("/",
         status: "success",
         message: categoriaCriado,
       });
+<<<<<<< HEAD
     } catch (err: any) {
+=======
+    } catch (err: unknown) {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       return res.status(500).json({
         status: "error",
         message: err,
@@ -123,8 +144,11 @@ categoriaRouter.post("/",
  *     summary: Lista todas as categorias
  *     tags:
  *       - categoria
+<<<<<<< HEAD
  *     security:
  *       - bearerAuth: []
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
  *     responses:
  *       200:
  *         description: Retorna a lista de categorias.
@@ -144,9 +168,14 @@ categoriaRouter.post("/",
  *         description: Erro.
  */
 categoriaRouter.get("/",
+<<<<<<< HEAD
   authenticate(TipoUsuario.CLIENT),
   validaRequisicao(ListaCategoriaSchema),
   async (req: Request<unknown, ListaCategoriaPayload>, res: Response, next: NextFunction) => {
+=======
+  validaRequisicao(ListaCategoriaSchema),
+  async (req: Request<unknown, ListaCategoriaPayload>, res: Response) => {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     try {
       const categorias = await CategoriaController.listaCategorias(dbCategoriasRepository);
 
@@ -155,8 +184,15 @@ categoriaRouter.get("/",
         categorias,
       });
     } catch (err: unknown) {
+<<<<<<< HEAD
       console.log(`Erro ao buscar categorias: ${err}`);
       return next(err);
+=======
+      return res.status(500).json({
+        status: "error",
+        message: err,
+      });
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     }
   }
 );
@@ -167,8 +203,11 @@ categoriaRouter.get("/",
  *     summary: Retorna categoria por id
  *     tags:
  *       - categoria
+<<<<<<< HEAD
  *     security:
  *       - bearerAuth: []
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
  *     parameters:
  *       - in: path
  *         name: id
@@ -208,6 +247,7 @@ categoriaRouter.get("/",
  *         description: Erro na api.
  */
 categoriaRouter.get("/:id",
+<<<<<<< HEAD
   authenticate(TipoUsuario.CLIENT),
   validaRequisicao(RetornaCategoriaSchema),
   async (req: Request<RetornaCategoriaParams, unknown>, res: Response, next: NextFunction) => {
@@ -215,6 +255,14 @@ categoriaRouter.get("/:id",
       const { id } = req.params;
 
       const categoria = await CategoriaController.retornaCategoria(dbCategoriasRepository, id);
+=======
+  validaRequisicao(RetornaCategoriaSchema),
+  async (req: Request<RetornaCategoriaParams, unknown>, res: Response) => {
+    try {
+      const { id } = req.params;
+
+      const categoria = await CategoriaController.retornaCategoria(dbCategoriasRepository,id);
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 
       if (categoria) {
         return res.status(200).json({
@@ -222,12 +270,24 @@ categoriaRouter.get("/:id",
           categoria,
         });
       }
+<<<<<<< HEAD
 
       throwError("NOT_FOUND", "Categoria não encontrada!");
 
     } catch (err: unknown) {
       console.log(`Erro ao buscar categoria: ${err}`);
       return next(err);
+=======
+      return res.status(404).json({
+        status: "error",
+        message: "Categoria não encontrada!",
+      });
+    } catch (err: unknown) {
+      return res.status(500).json({
+        status: "error",
+        message: err,
+      });
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     }
   }
 );
@@ -238,8 +298,11 @@ categoriaRouter.get("/:id",
  *     summary: Deleta uma categoria
  *     tags:
  *       - categoria
+<<<<<<< HEAD
  *     security:
  *       - bearerAuth: []
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
  *     parameters:
  *       - in: path
  *         name: id
@@ -276,10 +339,16 @@ categoriaRouter.get("/:id",
  *       500:
  *         description: Erro na api.
  */
+<<<<<<< HEAD
 categoriaRouter.delete("/:id",
   authenticate(TipoUsuario.ADMIN),
   validaRequisicao(DeletaCategoriaSchema),
   async (req: Request<DeletaCategoriaParams, unknown>, res: Response, next: NextFunction) => {
+=======
+categoriaRouter.delete("/:id", 
+  validaRequisicao(DeletaCategoriaSchema),
+  async (req: Request<DeletaCategoriaParams, unknown>, res: Response) => {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     try {
       const { id } = req.params;
 
@@ -290,11 +359,23 @@ categoriaRouter.delete("/:id",
           status: "success",
         });
       }
+<<<<<<< HEAD
 
       throwError("NOT_FOUND", "Categoria não encontrada!");
     } catch (err: unknown) {
       console.log(`Erro ao deletar categoria: ${err}`);
       return next(err);
+=======
+      return res.status(404).json({
+        status: "error",
+        message: "Categoria não encontrada!",
+      });
+    } catch (err: unknown) {
+      return res.status(500).json({
+        status: "error",
+        message: err,
+      });
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     }
   }
 );
@@ -305,8 +386,11 @@ categoriaRouter.delete("/:id",
  *     summary: Atualiza uma categoria
  *     tags:
  *       - categoria
+<<<<<<< HEAD
  *     security:
  *       - bearerAuth: []
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
  *     parameters:
  *       - in: path
  *         name: id
@@ -357,9 +441,14 @@ categoriaRouter.delete("/:id",
  *         description: Erro na api.
  */
 categoriaRouter.put("/:id",
+<<<<<<< HEAD
   authenticate(TipoUsuario.ADMIN),
   validaRequisicao(EditaCategoriaSchema),
   async (req: Request<EditaCategoriaParams, EditaCategoriaPayload>, res: Response, next: NextFunction) => {
+=======
+  validaRequisicao(EditaCategoriaSchema), 
+  async (req: Request<EditaCategoriaParams, EditaCategoriaPayload>, res: Response) => {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     try {
       const { id } = req.params;
       const categoria = req.body;
@@ -375,11 +464,23 @@ categoriaRouter.put("/:id",
           message: categoriaAtualizada,
         });
       }
+<<<<<<< HEAD
 
       throwError("NOT_FOUND", "Categoria não encontrada!");
     } catch (err: unknown) {
       console.log(`Erro ao editar categoria: ${err}`);
       return next(err);
+=======
+      return res.status(404).json({
+        status: "error",
+        message: "Categoria não encontrada!",
+      });
+    } catch (err: unknown) {
+      return res.status(500).json({
+        status: "error",
+        message: err,
+      });
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     }
   }
 );

@@ -6,6 +6,10 @@ import { PedidoDTO, StatusDoPedido, statusDoPedido } from "~domain/entities/type
 
 import FaturaModel from "./faturaModel";
 import ItemDoPedidoModel from "./itemPedidoModel";
+<<<<<<< HEAD
+=======
+import UsuarioModel from "./usuarioModel";
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 
 class PedidoModel extends Model<PedidoDTO> implements PedidoDTO {
   public id!: string;
@@ -93,6 +97,13 @@ class PedidoModel extends Model<PedidoDTO> implements PedidoDTO {
       sourceKey: "id",
       as: "itens",
     });
+<<<<<<< HEAD
+=======
+
+    this.belongsTo(UsuarioModel, {
+      as: "cliente",
+    });
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   }
 }
 

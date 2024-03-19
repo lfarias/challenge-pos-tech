@@ -1,6 +1,10 @@
 import { json, urlencoded } from "body-parser";
+<<<<<<< HEAD
 import { Express, NextFunction, Request, Response, Router } from "express";
 import { CustomError } from "handlerError/handlerError";
+=======
+import { Express, Request, Response, Router } from "express";
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 import morgan from "morgan";
 
 // import { DataBaseConfigInterface } from "adapter/driven/infra/config/interfaces/db.config.interface";
@@ -48,6 +52,7 @@ export class Server implements ServerInterface {
         this.appConfig.use(routeBase, route[routeBase]);
       }
 
+<<<<<<< HEAD
       this.appConfig.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
         if (err.code === 'NO_PERMISSION') {
           return res.status(401).json({
@@ -72,6 +77,8 @@ export class Server implements ServerInterface {
         })
       });
 
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       this.appConfig.all("*", (req: Request, res: Response) => {
         res.status(404).json({
           status: "fail",
@@ -88,11 +95,19 @@ export class Server implements ServerInterface {
         //   .then(() => {
         //     console.log("✅: Synced database successfully.");
         //   })
+<<<<<<< HEAD
         //   .catch((err: any) => {
         //     console.error("❌: Error on sync database.", err);
         //   });
       });
     } catch (err: any) {
+=======
+        //   .catch((err: unknown) => {
+        //     console.error("❌: Error on sync database.", err);
+        //   });
+      });
+    } catch (err: unknown) {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       console.error("🚨: Unable to init the server:", err);
     }
   }
