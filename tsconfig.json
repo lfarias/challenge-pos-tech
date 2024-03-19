@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -14,10 +15,12 @@
     "outDir": "./dist",
     "moduleResolution": "node",
     "paths": {
-      "~driven/*": ["adapter/driven/*"],
-      "~driver/*": ["adapter/driver/*"],
-      "~core/*": ["core/*"]
-    }
+      "~datasources/*": ["datasources/*"],
+      "~interfaceAdapters/*": ["interfaceAdapters/*"],
+      "~presenters/*": ["presenters/*"],
+      "~domain/*": ["domain/*"]
+    },
+    "typeRoots": ["./src/@types","./node_modules/@types"]
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]
