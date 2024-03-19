@@ -26,6 +26,13 @@ export default class ItemPedido {
     this.createdAt = new Date();
     this.deletedAt = itemPedido.deletedAt ?? null;
     this.updatedAt = itemPedido.updatedAt ?? null;
+<<<<<<< HEAD
+
+    if (this.quantidade <= 0){
+      throw new Error('Quantidade do item selecionado nao pode ser menor que 0')
+    }
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   }
 
   calculaTotal(){

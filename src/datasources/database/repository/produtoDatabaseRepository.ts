@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import throwError from "handlerError/handlerError";
+
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 import { ImagemProdutoDTO, ProdutoDTO } from "~domain/entities/types/produtoType";
 import ProdutoRepository from "~domain/repositories/produtoRepository";
 
@@ -9,6 +14,21 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
   async adicionaImagens(
     imagensProduto: ImagemProdutoDTO[]
   ): Promise<ImagemProdutoDTO[]> {
+<<<<<<< HEAD
+      const produtoExiste = ProdutoModel.findByPk(imagensProduto[0]?.produtoId as string);
+      if (!produtoExiste) {
+        throwError("NOT_FOUND", "Produto não encontrado");
+      }
+      return await ImagensProdutoModel.bulkCreate(imagensProduto);
+  }
+  async removeImagem(produtoId: string, imagemId: string): Promise<number> {
+      return ImagensProdutoModel.destroy({
+        where: { id: imagemId, produtoId },
+      });
+  }
+
+  async criaProduto(produto: ProdutoDTO): Promise<ProdutoDTO> {
+=======
     try {
       const produtoExiste = ProdutoModel.findByPk(imagensProduto[0]?.produtoId as string);
       if (!produtoExiste) {
@@ -33,12 +53,17 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
 
   async criaProduto(produto: ProdutoDTO): Promise<ProdutoDTO> {
     try {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       const categoriaExiste = await CategoriaModel.findByPk(
         produto?.categoriaId as string
       );
 
       if (!categoriaExiste) {
+<<<<<<< HEAD
+        throwError("NOT_FOUND", "Categoria não encontrado");
+=======
         throw new Error("categoria_inexistente");
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       }
 
       const produtoCriado = await ProdutoModel.create(
@@ -58,6 +83,12 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
         }
       );
       return produtoCriado;
+<<<<<<< HEAD
+  }
+
+  async deletaProduto(idProduto: string): Promise<number> {
+      return ProdutoModel.destroy({ where: { id: idProduto } });
+=======
     } catch (err: any) {
       console.error("Erro ao criar Produto: ", err);
       throw new Error(err);
@@ -71,19 +102,27 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
       console.error("Erro ao deletar produto: ", err);
       throw new Error(err);
     }
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   }
 
   async editaProduto(
     idProduto: string,
     produto: ProdutoDTO
   ): Promise<ProdutoDTO | null> {
+<<<<<<< HEAD
+=======
     try {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       const categoriaExiste = await CategoriaModel.findByPk(
         produto?.categoriaId as string
       );
 
       if (!categoriaExiste) {
+<<<<<<< HEAD
+        throwError("NOT_FOUND", "Categoria não encontrado");
+=======
         throw new Error("categoria_inexistente");
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       }
 
       const produtoAtual = await ProdutoModel.findByPk(idProduto);
@@ -93,6 +132,11 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
         await produtoAtual.save();
       }
       return produtoAtual;
+<<<<<<< HEAD
+  }
+
+  async listaProdutos(filtro: object): Promise<ProdutoDTO[]> {
+=======
     } catch (err: any) {
       console.error("Erro ao editar Produto: ", err);
       throw new Error(err);
@@ -101,6 +145,7 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
 
   async listaProdutos(filtro: object): Promise<ProdutoDTO[]> {
     try {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       const produtos = await ProdutoModel.findAll({
         attributes: {
           exclude: ["categoriaId"],
@@ -118,6 +163,11 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
         where: { ...filtro },
       });
       return produtos;
+<<<<<<< HEAD
+  }
+
+  async retornaProduto(idProduto: string): Promise<ProdutoDTO | null> {
+=======
     } catch (err: any) {
       console.error("Erro ao listar Produto: ", err);
       throw new Error(err);
@@ -126,6 +176,7 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
 
   async retornaProduto(idProduto: string): Promise<ProdutoDTO | null> {
     try {
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
       const produto = await ProdutoModel.findOne({
         attributes: {
           exclude: ["categoriaId"],
@@ -143,10 +194,13 @@ class ProdutosDataBaseRepository implements ProdutoRepository {
         where: { id: idProduto },
       });
       return produto;
+<<<<<<< HEAD
+=======
     } catch (err: any) {
       console.error("Erro ao retornar Produto: ", err);
       throw new Error(err);
     }
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   }
 }
 

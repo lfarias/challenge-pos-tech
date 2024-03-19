@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -18,7 +19,12 @@
       "~interfaceAdapters/*": ["interfaceAdapters/*"],
       "~presenters/*": ["presenters/*"],
       "~domain/*": ["domain/*"]
+<<<<<<< HEAD
+    },
+    "typeRoots": ["./src/@types","./node_modules/@types"]
+=======
     }
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]

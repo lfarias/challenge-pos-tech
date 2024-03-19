@@ -1,11 +1,19 @@
 import { StatusDePagamento } from "~domain/entities/fatura";
+<<<<<<< HEAD
+import { AdicionaItemInput, RealizaPedidoInput, RemoveItemInput } from "~domain/entities/types/pedidoService.type";
+=======
 import { RealizaPedidoInput } from "~domain/entities/types/pedidoService.type";
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 import { PedidoDTO, PedidoInput } from "~domain/entities/types/pedidoType";
 import CheckoutRepository from "~domain/repositories/checkoutRepository";
 import FaturaRepository from "~domain/repositories/faturaRepository";
 import PedidoRepository, {
+<<<<<<< HEAD
+  queryStatusPagamentoInput,
+=======
   AdicionaItemInput,
   RemoveItemInput,
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
 } from "~domain/repositories/pedidoRepository";
 import ProdutoRepository from "~domain/repositories/produtoRepository";
 import PedidoUseCase from "~domain/useCases/pedidoUseCase";
@@ -13,11 +21,30 @@ import PedidoUseCase from "~domain/useCases/pedidoUseCase";
 export class PedidoController {
   static async iniciaPedido(
     pedidoRepository: PedidoRepository,
+<<<<<<< HEAD
+    clienteId: string
+  ): Promise<PedidoDTO | null> {
+    const pedidoInput: PedidoInput = {
+      clienteId,
+      faturaId: null,
+      status: "Rascunho",
+      valor: 0,
+      retiradoEm: null,
+      createdAt: new Date(),
+      updatedAt: null,
+      deletedAt: null
+    }
+
+    const pedidoCriada = await PedidoUseCase.iniciaPedido(
+      pedidoRepository,
+      pedidoInput
+=======
     pedido: PedidoInput
   ): Promise<PedidoDTO | null> {
     const pedidoCriada = await PedidoUseCase.iniciaPedido(
       pedidoRepository,
       pedido
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     );
     return pedidoCriada;
   }
@@ -113,12 +140,20 @@ export class PedidoController {
   static async statusDePagamento(
     pedidoRepository: PedidoRepository,
     faturaRepository: FaturaRepository,
+<<<<<<< HEAD
+    queryStatusPagamento: queryStatusPagamentoInput
+=======
     pedidoId: string
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   ): Promise<StatusDePagamento | null | undefined> {
     return await PedidoUseCase.statusDePagamento(
       pedidoRepository,
       faturaRepository,
+<<<<<<< HEAD
+      queryStatusPagamento
+=======
       pedidoId
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
     );
   }
 }

@@ -1,6 +1,10 @@
 
 export interface ItemDoPedidoInput {
   id?: string;
+<<<<<<< HEAD
+  clienteId?: string | null;
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
   pedidoId: string;
   produtoId: string;
   quantidade: number;

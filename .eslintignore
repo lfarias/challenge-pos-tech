@@ -1,2 +1,7 @@
 node_modules
 dist
+<<<<<<< HEAD
+commitlint.config.js
+**/*.js
+=======
+>>>>>>> adf27ff2c8ad196742a99bd5cc1f6859403f0778
